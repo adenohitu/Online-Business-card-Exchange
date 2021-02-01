@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="デジタル名刺を交換するサービス" />
+    <meta name="author" content="jmjmri" />
+    <title>CARD名刺交換サービス</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/images/icon.png" />
+  </head>
+
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Card</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">ホーム</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/registration">名刺データ登録</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/usermine">自分の名刺</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/list">名刺一覧</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/send">名刺を送る</a>
+            </li>
+          </ul>
+          <div class="form-inline mt-2 mt-md-0">
+            <a
+              href="/logout"
+              class="btn btn-outline-success btn-block"
+              role="button"
+              >ログアウト</a
+            >
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container-fluid py-3">
+      <div class="row py-2">
+        <div class="namecard">
+          <p class="name"><%= name_last %> <%= name_first %></p>
+          <span class="phonetic"><%= name_last_en %> <%= name_first_en %></span>
+          <div class="contact">
+            <span><%= Belongs %></span>
+            <span><i class="far fa-envelope"></i>MailAddress</span>
+            <span><%= MailAddress %></span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="line-it-button"
+        data-lang="ja"
+        data-type="share-a"
+        data-ver="3"
+        data-url="user?userid=<%= id %>"
+        data-color="default"
+        data-size="large"
+        data-count="false"
+        style="display: none"
+      ></div>
+      <div class="card bg-light mb-3">
+        <div class="card-header">qrコード</div>
+        <a class="text-danger"
+          >注意(iosを使っている場合)<a
+            >iosのコントロールセンターにあるqrコードリーダーでは読み込めません。標準カメラアプリ等で読み込んでください。</a
+          ></a
+        >
+        <div class="card-body">
+          <div id="qrcode"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- JS, Popper.js, and jQuery -->
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/javascripts/jquery.qrcode.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js"
+    async="async"
+    defer="defer"
+  ></script>
+  <script>
+    $("#qrcode").qrcode("user?userid=<%= id %>");
+  </script>
+</html>

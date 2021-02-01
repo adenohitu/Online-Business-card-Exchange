@@ -1,0 +1,73 @@
+.namecard {
+    /*名刺の区切れ目がわかるような線*/
+    border: 1px solid #ddd;
+
+    /*名刺の大きさ（縦横比さえ合ってれば良いと思います）*/
+    width: 91mm;
+    height: 55mm;
+
+    /*名刺の余白*/
+    margin: auto;
+    padding: 3rem;
+    /*装飾*/
+    color: #333;
+}
+
+.name {
+    /*文字の装飾*/
+    font-size: 1.8rem;
+
+    /*微妙にずれてるのを修正*/
+    margin-top: -1.9rem;
+    margin-left: -1rem;
+}
+.phonetic{
+    font-size: 0.8rem;
+}
+.contact {
+    /*flexboxにして縦並びにしています*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    /*余白*/
+    margin-top: 1.5rem;
+    margin-left: -1rem;
+
+    /*装飾*/
+    font-size: 0.7rem;
+}
+
+.contact span {
+    margin-top: 0.1rem;
+}
+
+.contact i {
+    /*SNSなどのアイコンの位置調整*/
+    width: 1.25rem;
+}
+
+.namecard img {
+    /*画像のサイズ指定*/
+    width: 6.5rem;
+
+    /*画像の位置指定*/
+    position: relative;
+    left: 10rem;
+    bottom: 6rem;
+}
+/*https://qiita.com/AsukaOkochi/items/270a9384125f9f6233d5 より*/
+
+button {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+button img {
+  display: block;
+}

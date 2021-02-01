@@ -1,0 +1,53 @@
+version: '3'
+services:
+  webserver:
+    build: ./
+    image: node-express-dev:1.0
+    tty: true
+    volumes:
+      - ./node/app:/app
+    expose:
+      - "3000"
+    environment:
+      - VIRTUAL_HOST=
+      - LETSENCRYPT_HOST=
+      - LETSENCRYPT_EMAIL=
+      - VIRTUAL_PORT=3000
+      - "TZ=Asia/Tokyo"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    volumes:
+      - ./node/app:/app
+    command: npm start
+    restart: always
+  mysql:
+    image: mariadb
+    expose:
+      - "3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=node_db
+      - MYSQL_USER=node
+      - MYSQL_PASSWORD=
+      - "TZ=Asia/Tokyo"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - VIRTUAL_HOST=
+      - LETSENCRYPT_HOST=
+      - LETSENCRYPT_EMAIL=
+      - "TZ=Asia/Tokyo"
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
+networks:
+  default:
+    external:
+      name: nginx-proxy_default

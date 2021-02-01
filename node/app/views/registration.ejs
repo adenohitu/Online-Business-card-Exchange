@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="デジタル名刺を交換するサービス" />
+    <meta name="author" content="jmjmri" />
+    <title>CARD名刺交換サービス</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/images/icon.png" />
+  </head>
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Card</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">ホーム</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/registration">名刺データ登録</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/usermine">自分の名刺</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/list">名刺一覧</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/send">名刺を送る</a>
+            </li>
+          </ul>
+          <div class="form-inline mt-2 mt-md-0">
+            <a
+              href="/logout"
+              class="btn btn-outline-success btn-block"
+              role="button"
+              >ログアウト</a
+            >
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container-fluid py-3">
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">ユーザー情報登録</h4>
+        <form
+          class="needs-validation"
+          action="/registration"
+          method="post"
+          　novalidate
+        >
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="name_last">苗字※必須</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name_last"
+                placeholder=""
+                value=""
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="name_last_en"
+                >苗字ローマ字(半角アルファベット)※必須</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="name_last_en"
+                placeholder=""
+                value=""
+                pattern="^[0-9A-Za-z]+$"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="name_first">名前※必須</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name_first"
+                placeholder=""
+                value=""
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="name_first_en"
+                >名前ローマ字(半角アルファベット)※必須</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="name_first_en"
+                placeholder=""
+                value=""
+                pattern="^[0-9A-Za-z]+$"
+                required
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nickname">ニックネーム・呼び方</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                name="nickname"
+                placeholder="二つ以上の場合は点で区切る"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="Belongs">所属(○○学校など)※必須</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                name="Belongs"
+                placeholder="二つ以上の場合は点で区切る"
+                required
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="MailAddress">メールアドレス</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                name="MailAddress"
+                placeholder=""
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="hobby">twitter ID</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                name="Twitter"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="hobby">Instagram ID</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                name="Instagram"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="comment">コメント※１００字以内</label>
+            <textarea class="form-control" name="comment" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">
+            登録する
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <!-- JS, Popper.js, and jQuery -->
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    $(function () {
+      $("input").keydown(function (e) {
+        if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+    });
+  </script>
+</html>
